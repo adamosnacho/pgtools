@@ -14,8 +14,8 @@ class sprite:
         self.rect = rect
         self.sf = sf
         self.sp = (self.sf,self.rect)
-    def Disp(self,screen):
-        screen.blit(self.sf, self.rect)
+    def Disp(self):
+        self.screen.blit(self.sf, self.rect)
 class spritefi:
     def __init__(self,zoom,path,angle,screen):
         """input -> size, zoom, imagePath, rotationAngle"""
@@ -26,8 +26,8 @@ class spritefi:
         self.sf = sf
         self.rect = rect
         self.sp = (self.sf,self.rect)
-    def Disp(self,screen):
-        screen.blit(self.sf, self.rect)
+    def Disp(self):
+        self.screen.blit(self.sf, self.rect)
 class text:
     def __init__(self,text,fontpath,Color,screen):
         """input -> text, pathOfFont,Color"""
@@ -49,7 +49,7 @@ class text:
 def Init(screenSize,bckColor):
     """input -> screen size, Color -> set background color / Returns Screen and background"""
     pg.init()
-    if bckColor != None:
-        Back = sprite(screenSize,color=bckColor)
     dis = pg.display.set_mode(screenSize)
+    if bckColor != None:
+        Back = sprite(screenSize,dis,color=bckColor)
     return dis,Back
